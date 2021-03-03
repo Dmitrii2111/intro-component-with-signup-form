@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+$primaryRed: hsl(0, 100%, 74%);
+$primaryGreen: hsl(154, 59%, 51%);
+$accent: hsl(248, 32%, 49%);
+$neutralDark: hsl(249, 10%, 26%);
+$neutralGraish: hsl(246, 25%, 77%);
+$borderRadius: 7px;
+$inputHeight: 40px;
+$distanceBetweenInputs: 20px;
+$boxShadow: 0px 6px rgba(0, 0, 0, 0.15);
+
+$fontFamily: 'Poppins', sans-serif;
+$fontSize: 16px;
+
+@mixin formSize($value){
+   width: $value;
+   max-width: 500px;
+}
+@mixin placeCenter {
+   display: flex;
+   flex-direction: column;
+   place-content: center;
+   align-items: center;
+}
+
+*{
+   margin: 0;
+   padding: 0;
+}
+html, body{
+   height: 100%
+}
+.layout{
+   height: 100%;
+   display: flex;
+   place-items: center;
+   flex-direction: column;
+   background: url(../images/bg-intro-desktop.png),
+               $primaryRed;
+   .header{
+      flex: 1 0 auto;
+   }
+   .content_wrap{
+      flex: 8 0 auto;
+      width: 80%;
+      display: flex;
+      flex-direction: row;
+      .text_block{
+         width: 50%;
+         // border: solid;
+         @include placeCenter();
+         .text_wrap{
+            @include formSize(70%);
+            h1{
+               font-family: $fontFamily;
+               font-size: 40px;
+               color: white;
+               font-weight: 500;
+            }
+            p{
+               padding-top: 20px;
+               font-family: $fontFamily;
+               font-size: $fontSize - 4px;
+               color: rgba(255, 255, 255, 0.75);
+            }
+         }
+      }
+      .form_block{
+         width: 50%;
+         // border: solid;
+         @include placeCenter();
+         #label_form{
+            background: $accent;
+            height: $inputHeight;
+            border-radius: $borderRadius;
+            box-shadow: $boxShadow;
+            margin-bottom: $distanceBetweenInputs;
+            @include formSize(80%);
+            text-align: center;
+            display: flex;
+            place-items: center;
+            justify-content: center;
+            font-family: $fontFamily;
+            font-size: $fontSize - 4px;
+            color: white;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            span{
+               font-weight: 700;
+            }
+         }
+         form{
+            @include formSize(80%);
+            @include placeCenter();
+            background: white;
+            border-radius: $borderRadius;
+            box-shadow: $boxShadow;
+            input{
+               @include formSize(90%);
+               height: $inputHeight;
+               margin-bottom: $distanceBetweenInputs;
+               border-radius: $borderRadius;
+               outline: none;
+               border: 1px solid $neutralGraish;
+               text-indent: 20px;
+               font-family: $fontFamily;
+               font-size: $fontSize - 4px;
+            }
+            input:first-child{
+               margin-top: 30px;
+            }
+            
+            #submit{
+               margin-bottom: $distanceBetweenInputs/2;
+               border: none;
+               background: $primaryGreen;
+               color: white;
+               font-family: $fontFamily;
+               font-size: $fontSize - 4px;
+               text-transform: uppercase;
+               letter-spacing: 1.5px;
+               -webkit-transition: opacity 1s 0.1s ease;
+               -moz-transition: opacity 1s 0.1s ease;
+               -o-transition: opacity 1s 0.1s ease;
+               box-shadow: 0 2px rgba(56, 204, 140, 0.55);
+            }
+            #submit:hover{
+               opacity: 0.5;
+               cursor: pointer;
+            }
+            label{
+               padding-bottom: 30px;
+               font-family: $fontFamily;
+               font-size: 8px;
+               font-weight: 300;
+               color: $neutralGraish;
+               span{
+                  color: $primaryRed;
+                  font-weight: 700;
+               }
+            }
+             
+         }
+      }
+   }
+   .footer{
+      padding-top: 3rem;
+      flex: 0 0 auto;
+      padding-bottom: 5px;
+   }
+}
+@media (max-width: 375px) {
+   .layout .header{
+      flex: 7 0 auto
+   }
+   .layout .content_wrap{
+      width: 100%;
+      flex-direction: column;
+      .text_block{
+         width: 90%;
+         text-align: center;
+         margin: 0 auto;
+         .text_wrap{
+            width: 100%;
+            h1{
+               font-size: $fontSize + 12px;
+            }
+            p{
+               margin: 0 auto;
+            }
+         }
+      }
+      .form_block{
+         padding-top: 30px;
+         width: 100%;
+         label{
+            width: 90%;
+         }
+      }
+   }
+}
