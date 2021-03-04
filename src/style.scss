@@ -46,9 +46,9 @@ html, body{
       width: 80%;
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       .text_block{
          width: 50%;
-         // border: solid;
          @include placeCenter();
          .text_wrap{
             @include formSize(70%);
@@ -68,7 +68,7 @@ html, body{
       }
       .form_block{
          width: 50%;
-         // border: solid;
+         min-width: 300px;
          @include placeCenter();
          #label_form{
             background: $accent;
@@ -99,13 +99,28 @@ html, body{
             input{
                @include formSize(90%);
                height: $inputHeight;
-               margin-bottom: $distanceBetweenInputs;
+               // margin-bottom: $distanceBetweenInputs;
                border-radius: $borderRadius;
                outline: none;
                border: 1px solid $neutralGraish;
                text-indent: 20px;
                font-family: $fontFamily;
                font-size: $fontSize - 4px;
+            }
+            span{
+               visibility: hidden;
+               line-height: $distanceBetweenInputs;
+               font-family: $fontFamily;
+               font-size: $fontSize /2;
+               color: $primaryRed;
+               padding-right: 10%;
+               align-self: flex-end;
+            }
+            .error{
+               background-image: url(../images/icon-error.svg);
+               background-repeat: no-repeat;
+               background-position: 95% center;
+               border: 1px solid $primaryRed;
             }
             input:first-child{
                margin-top: 30px;
@@ -136,8 +151,10 @@ html, body{
                font-weight: 300;
                color: $neutralGraish;
                span{
+                  visibility: visible;
                   color: $primaryRed;
                   font-weight: 700;
+                  padding-right: 0;
                }
             }
              
